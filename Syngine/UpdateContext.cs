@@ -9,7 +9,7 @@ namespace Syngine
 	public struct UpdateContext
 	{
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="UpdateContext"/>
         /// </summary>
         /// <param name="controller"></param>
         /// <param name="gameTime"></param>
