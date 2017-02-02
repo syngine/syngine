@@ -28,7 +28,6 @@ namespace AndroidGame
 		{
 			global::Syngine.Resource.String.ApplicationName = global::AndroidGame.Resource.String.ApplicationName;
 			global::Syngine.Resource.String.Hello = global::AndroidGame.Resource.String.Hello;
-			global::Syngine.Resource.String.library_name = global::AndroidGame.Resource.String.library_name;
 			global::Syngine.Physics.Android.Resource.String.ApplicationName = global::AndroidGame.Resource.String.ApplicationName;
 			global::Syngine.Physics.Android.Resource.String.Hello = global::AndroidGame.Resource.String.Hello;
 			global::Syngine.Physics.Android.Resource.String.library_name = global::AndroidGame.Resource.String.library_name;

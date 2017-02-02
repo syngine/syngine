@@ -1,11 +1,10 @@
-﻿using Jint;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Syngine.Controllers;
 
 namespace Syngine
 {
 	/// <summary>
-	/// 
+	/// The base <see cref="Game"/> object that is the starting point of the game.
 	/// </summary>
 	public abstract class GameBase : Game
 	{
