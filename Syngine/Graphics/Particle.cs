@@ -160,7 +160,10 @@ namespace Syngine.Graphics
 		#region Methods
 
 		public void Initialize()
-        {
+		{
+		    DefaultHeight = 1;
+		    DefaultWidth = 1;
+
             _rectangle = new Rectangle((int)Position.X, (int)Position.Y, (int)DefaultWidth, (int)DefaultHeight);
 
             if (Position == Vector2.Zero && StartPosition != Vector2.Zero)
@@ -170,8 +173,8 @@ namespace Syngine.Graphics
 
             if (_texture == null && _defaultTexture == null)
             {
-                _defaultTexture = new Texture2D(GameContext.Controller.GraphicsDevice, (int)DefaultWidth, (int)DefaultHeight, false, SurfaceFormat.Color);
-                _defaultTexture.SetData(new[] {Color.White});
+                _defaultTexture = new Texture2D(GameContext.Controller.GraphicsDevice, (int)DefaultWidth, (int)DefaultHeight, true, SurfaceFormat.Color);
+                _defaultTexture.SetData(new[] { Color.White }, 0, _defaultTexture.Width * _defaultTexture.Height);
             }
 
             if (_texture == null)
