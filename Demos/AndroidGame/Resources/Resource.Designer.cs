@@ -30,7 +30,6 @@ namespace AndroidGame
 			global::Syngine.Resource.String.Hello = global::AndroidGame.Resource.String.Hello;
 			global::Syngine.Physics.Android.Resource.String.ApplicationName = global::AndroidGame.Resource.String.ApplicationName;
 			global::Syngine.Physics.Android.Resource.String.Hello = global::AndroidGame.Resource.String.Hello;
-			global::Syngine.Physics.Android.Resource.String.library_name = global::AndroidGame.Resource.String.library_name;
 		}
 		
 		public partial class Attribute
