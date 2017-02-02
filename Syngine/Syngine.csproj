@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E711BCA-22DC-40AB-9FE0-CEE1C050F968}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Syngine</RootNamespace>
+    <AssemblyName>Syngine</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Rand.cs" />
+    <Compile Include="Graphics\Line.cs" />
+    <Compile Include="Graphics\IAnimation.cs" />
+    <Compile Include="Graphics\BeginCallOptions.cs" />
+    <Compile Include="Components\Camera.cs" />
+    <Compile Include="Graphics\Drawable.cs" />
+    <Compile Include="Components\FpsCounter.cs" />
+    <Compile Include="Components\ILayer.cs" />
+    <Compile Include="Components\Layer.cs" />
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Extensions\GameExtensions.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="Graphics\IDraw.cs" />
+    <Compile Include="Components\ILoad.cs" />
+    <Compile Include="Components\IUpdate.cs" />
+    <Compile Include="Components\Loadable.cs" />
+    <Compile Include="Components\Updatable.cs" />
+    <Compile Include="DrawContext.cs" />
+    <Compile Include="Extensions\GameServicesContainerExtensions.cs" />
+    <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="GameBase.cs" />
+    <Compile Include="GameContext.cs" />
+    <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Graphics\DrawableString.cs" />
+    <Compile Include="Graphics\DrawableTexture.cs" />
+    <Compile Include="Graphics\Particle.cs" />
+    <Compile Include="Graphics\ParticleEmitter.cs" />
+    <Compile Include="Graphics\ParticleSystem.cs" />
+    <Compile Include="Graphics\PlayMode.cs" />
+    <Compile Include="Graphics\PlayState.cs" />
+    <Compile Include="Graphics\SpriteBook.cs" />
+    <Compile Include="Graphics\SpriteFrame.cs" />
+    <Compile Include="Graphics\SpriteSheet.cs" />
+    <Compile Include="GameInput.cs" />
+    <Compile Include="Graphics\TextureAnimation.cs" />
+    <Compile Include="Input\IInputSubscription.cs" />
+    <Compile Include="Input\ActionList.cs" />
+    <Compile Include="Input\GamePad\GamePadHandler.cs" />
+    <Compile Include="Input\GamePad\InputActionGamePadExtensions.cs" />
+    <Compile Include="Input\IGamePadHandler.cs" />
+    <Compile Include="Input\IHandleInput.cs" />
+    <Compile Include="Input\IInputAction.cs" />
+    <Compile Include="Input\IInputCallback.cs" />
+    <Compile Include="Input\IInputContext.cs" />
+    <Compile Include="Input\IKeyboardHandler.cs" />
+    <Compile Include="Input\IMouseHandler.cs" />
+    <Compile Include="Input\InputAction.cs" />
+    <Compile Include="Input\InputCallback.cs" />
+    <Compile Include="Input\InputCallbackContext.cs" />
+    <Compile Include="Input\InputContext.cs" />
+    <Compile Include="Input\InputManager.cs" />
+    <Compile Include="Input\InputState.cs" />
+    <Compile Include="Input\InputSubscription.cs" />
+    <Compile Include="Input\InputType.cs" />
+    <Compile Include="Input\ITouchHandler.cs" />
+    <Compile Include="Input\Keyboard\InputActionKeyboardExtensions.cs" />
+    <Compile Include="Input\Keyboard\KeyboardHandler.cs" />
+    <Compile Include="Input\Mouse\InputActionMouseExtensions.cs" />
+    <Compile Include="Input\Mouse\MouseButtons.cs" />
+    <Compile Include="Input\Mouse\MouseHandler.cs" />
+    <Compile Include="Input\Touch\InputActionTouchExtensions.cs" />
+    <Compile Include="Input\Touch\TouchHandler.cs" />
+    <Compile Include="LoadContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="jint, Version=2.10.2.0, Culture=neutral, PublicKeyToken=2e92ba9c8d81157f, processorArchitecture=MSIL">
+      <HintPath>..\packages\jint.2.10.2\lib\portable40-net40+sl5+win8+wp8+wpa81\jint.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.Portable.3.2.99.1-Beta\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

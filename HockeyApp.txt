@@ -1,0 +1,5 @@
+Install-Package HockeySDK.WP -Pre
+
+HockeyApp.CrashHandler.Instance.Configure(this, "3140d4ffba9f4b169ef9f4246b967871", RootFrame);
+
+HockeyApp.CrashHandler.Instance.HandleCrashes();

@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0B1A5858-1A04-4BDD-B387-8C29083362F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Syngine</RootNamespace>
+    <AssemblyName>Syngine.WindowsDX</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MonoGame.Framework.WindowsDX.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Syngine\Components\Camera.cs">
+      <Link>Components\Camera.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Components\FpsCounter.cs">
+      <Link>Components\FpsCounter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Components\ILayer.cs">
+      <Link>Components\ILayer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Components\ILoad.cs">
+      <Link>Components\ILoad.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Components\IUpdate.cs">
+      <Link>Components\IUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Components\Layer.cs">
+      <Link>Components\Layer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Components\Loadable.cs">
+      <Link>Components\Loadable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Components\Updatable.cs">
+      <Link>Components\Updatable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Controllers\Controller.cs">
+      <Link>Controllers\Controller.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Controllers\GameController.cs">
+      <Link>Controllers\GameController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Controllers\IController.cs">
+      <Link>Controllers\IController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\DrawContext.cs">
+      <Link>DrawContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Extensions\GameExtensions.cs">
+      <Link>Extensions\GameExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Extensions\GameServicesContainerExtensions.cs">
+      <Link>Extensions\GameServicesContainerExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Extensions\RectangleExtensions.cs">
+      <Link>Extensions\RectangleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\GameBase.cs">
+      <Link>GameBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\GameContext.cs">
+      <Link>GameContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\GameInput.cs">
+      <Link>GameInput.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\GameState.cs">
+      <Link>GameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\BeginCallOptions.cs">
+      <Link>Graphics\BeginCallOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\Drawable.cs">
+      <Link>Graphics\Drawable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\DrawableString.cs">
+      <Link>Graphics\DrawableString.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\DrawableTexture.cs">
+      <Link>Graphics\DrawableTexture.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\IAnimation.cs">
+      <Link>Graphics\IAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\IDraw.cs">
+      <Link>Graphics\IDraw.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\Line.cs">
+      <Link>Graphics\Line.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\Particle.cs">
+      <Link>Graphics\Particle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\ParticleEmitter.cs">
+      <Link>Graphics\ParticleEmitter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\ParticleSystem.cs">
+      <Link>Graphics\ParticleSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\PlayMode.cs">
+      <Link>Graphics\PlayMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\PlayState.cs">
+      <Link>Graphics\PlayState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\SpriteBook.cs">
+      <Link>Graphics\SpriteBook.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\SpriteFrame.cs">
+      <Link>Graphics\SpriteFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\SpriteSheet.cs">
+      <Link>Graphics\SpriteSheet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Graphics\TextureAnimation.cs">
+      <Link>Graphics\TextureAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\ActionList.cs">
+      <Link>Input\ActionList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\GamePad\GamePadHandler.cs">
+      <Link>Input\GamePad\GamePadHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\GamePad\InputActionGamePadExtensions.cs">
+      <Link>Input\GamePad\InputActionGamePadExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\IGamePadHandler.cs">
+      <Link>Input\IGamePadHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\IHandleInput.cs">
+      <Link>Input\IHandleInput.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\IInputAction.cs">
+      <Link>Input\IInputAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\IInputCallback.cs">
+      <Link>Input\IInputCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\IInputContext.cs">
+      <Link>Input\IInputContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\IInputSubscription.cs">
+      <Link>Input\IInputSubscription.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\IKeyboardHandler.cs">
+      <Link>Input\IKeyboardHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\IMouseHandler.cs">
+      <Link>Input\IMouseHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\InputAction.cs">
+      <Link>Input\InputAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\InputCallback.cs">
+      <Link>Input\InputCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\InputCallbackContext.cs">
+      <Link>Input\InputCallbackContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\InputContext.cs">
+      <Link>Input\InputContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\InputManager.cs">
+      <Link>Input\InputManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\InputState.cs">
+      <Link>Input\InputState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\InputSubscription.cs">
+      <Link>Input\InputSubscription.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\InputType.cs">
+      <Link>Input\InputType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\ITouchHandler.cs">
+      <Link>Input\ITouchHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\Keyboard\InputActionKeyboardExtensions.cs">
+      <Link>Input\Keyboard\InputActionKeyboardExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\Keyboard\KeyboardHandler.cs">
+      <Link>Input\Keyboard\KeyboardHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\Mouse\InputActionMouseExtensions.cs">
+      <Link>Input\Mouse\InputActionMouseExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\Mouse\MouseButtons.cs">
+      <Link>Input\Mouse\MouseButtons.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\Mouse\MouseHandler.cs">
+      <Link>Input\Mouse\MouseHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\Touch\InputActionTouchExtensions.cs">
+      <Link>Input\Touch\InputActionTouchExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Input\Touch\TouchHandler.cs">
+      <Link>Input\Touch\TouchHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\LoadContext.cs">
+      <Link>LoadContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\Rand.cs">
+      <Link>Rand.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Syngine\UpdateContext.cs">
+      <Link>UpdateContext.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" ProjectLinkReference="7e711bca-22dc-40ab-9fe0-cee1c050f968" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
