@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Facebook">
-      <HintPath>..\..\Components\facebook-sdk-6.2.2\lib\android\Facebook.dll</HintPath>
-    </Reference>
     <Reference Include="FarseerPhysics">
       <HintPath>..\..\Lib\FarseerPhysics.dll</HintPath>
     </Reference>
@@ -80,12 +77,6 @@
       <Project>{ebda5612-3ea3-4977-a49d-653519ebdac8}</Project>
       <Name>Syngine.Android</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="facebook-sdk">
-      <Visible>False</Visible>
-      <Version>6.2.2</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\" />
