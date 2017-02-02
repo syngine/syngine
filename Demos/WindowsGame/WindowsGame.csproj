@@ -116,7 +116,6 @@
     <None Include="app.config" />
     <None Include="Content\Fonts\Courier New.spritefont" />
     <None Include="packages.config" />
-    <None Include="WindowsGame_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

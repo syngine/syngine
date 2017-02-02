@@ -114,7 +114,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="WindowsUniversalGame_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Sprites\MonsterA\Idle.png" />
