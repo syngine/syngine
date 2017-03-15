@@ -82,7 +82,7 @@ namespace Syngine.Graphics
 		/// </summary>
 		public override void UnloadContent()
 		{
-            _texture.Dispose();
+            _texture?.Dispose();
 		}
 
 		/// <summary>
