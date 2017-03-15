@@ -6,10 +6,10 @@ using Syngine.Components;
 namespace Syngine.Input
 {
 	/// <summary>
-	/// 
+	/// Manages user input callbacks and subscriptions.
 	/// </summary>
-	public class InputManager : Updatable
-	{
+	public class InputManager : IInputManager
+    {
 		#region Fields
 
 	    public ActionList Actions { get; } = new ActionList();
@@ -23,6 +23,7 @@ namespace Syngine.Input
 		/// </summary>
 		public InputManager()
 		{
+		    Enabled = true;
 			CurrentState = GetInputState();
 		}
 
@@ -40,15 +41,37 @@ namespace Syngine.Input
 
 		private InputState CurrentState { get; set; }
 
-		#endregion
+        public bool Enabled { get; set; }
 
-		#region Methods
+        public bool IsInitialized { get; private set; }
 
-		/// <summary>
-		/// Sets the specified mouse handler to handle user input.
-		/// </summary>
-		/// <param name="mouse">The mouse handler.</param>
-		public void Set(IMouseHandler mouse)
+        public ILayer Layer => null;
+
+        #endregion
+
+        #region Methods
+
+        public void Initialize()
+        {
+            IsInitialized = true;
+        }
+
+        public void Update(UpdateContext context)
+        {
+            if (Enabled)
+            {
+                var previousState = CurrentState;
+                CurrentState = GetInputState();
+                var inputContext = new InputContext(CurrentState, previousState);
+                Actions.Update(inputContext, new InputCallbackContext(context, CurrentState, previousState));
+            }
+        }
+
+        /// <summary>
+        /// Sets the specified mouse handler to handle user input.
+        /// </summary>
+        /// <param name="mouse">The mouse handler.</param>
+        public void Set(IMouseHandler mouse)
 		{
 			Mouse = mouse;
 		}
@@ -85,39 +108,66 @@ namespace Syngine.Input
 		/// </summary>
 		/// <param name="predicate"></param>
 		/// <returns></returns>
-		public IInputCallback If(Func<IInputContext, bool> predicate)
+		public IInputSubscription If(Func<IInputContext, bool> predicate, Action<InputCallbackContext> callback)
 		{
-		    var subscription = new InputSubscription();
-		    var callback = new InputCallback(subscription);
-		    subscription.Action = new InputAction(this, predicate, callback);
+            return If(predicate).Call(callback);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public IInputCallback If(Func<IInputContext, bool> predicate)
+        {
+            var subscription = new InputSubscription();
+            var callback = new InputCallback(subscription);
+            subscription.Action = new InputAction(this, predicate, callback);
             Actions.Add(subscription.Action);
-			return callback;
-		}
+            return callback;
+        }
 
-		protected override void UpdateCore(UpdateContext context)
-		{
-			var previousState = CurrentState;
-			CurrentState = GetInputState();
-			var inputContext = new InputContext(CurrentState, previousState);
-			Actions.Update(inputContext, new InputCallbackContext(context, CurrentState, previousState));
-		}
+        public IGamePadHandler GetGamePadHandler()
+        {
+            return GamePad;
+        }
 
-		internal bool Remove(IInputAction action)
-		{
-			return Actions.Remove(action);
-		}
+        public IKeyboardHandler GetKeyboardHandler()
+        {
+            return Keyboard;
+        }
 
-		protected InputState GetInputState()
-		{
-			return new InputState
-			{
-				MouseState = Mouse?.GetState() ?? new MouseState(),
-				TouchState = Touch?.GetState() ?? new TouchCollection(),
-				GamePadState = GamePad?.GetState() ?? new GamePadState(),
-				KeyboardState = Keyboard?.GetState() ?? new KeyboardState(),
-			};
-		}
+        public IMouseHandler GetMouseHandler()
+        {
+            return Mouse;
+        }
 
-		#endregion
-	}
+        public ITouchHandler GetTouchHandler()
+        {
+            return Touch;
+        }
+
+        internal bool Remove(IInputAction action)
+        {
+            return Actions.Remove(action);
+        }
+
+        protected InputState GetInputState()
+        {
+            return new InputState
+            {
+                MouseState = Mouse?.GetState() ?? new MouseState(),
+                TouchState = Touch?.GetState() ?? new TouchCollection(),
+                GamePadState = GamePad?.GetState() ?? new GamePadState(),
+                KeyboardState = Keyboard?.GetState() ?? new KeyboardState(),
+            };
+        }
+
+        public void SetLayer(ILayer layer)
+        {
+            // Do nothing for the input manager.
+        }
+
+        #endregion
+    }
 }

@@ -41,17 +41,16 @@ namespace WindowsGame
         /// </summary>
         protected override void Initialize()
         {
-            base.Initialize();
-
             //Controller.GraphicsDeviceManager.IsFullScreen = true;
             //Controller.GraphicsDeviceManager.PreferredBackBufferWidth = Controller.GraphicsDevice.DisplayMode.Width;
             //Controller.GraphicsDeviceManager.PreferredBackBufferHeight = Controller.GraphicsDevice.DisplayMode.Height;
             //Controller.GraphicsDeviceManager.ToggleFullScreen();
 
-            GameInput.Input.Set(new TouchHandler());
-            GameInput.Input.Set(new MouseHandler());
-            GameInput.Input.Set(new KeyboardHandler());
-            _subscription = GameInput.If(c => c.WasReleased(Keys.Escape) || c.WasReleased(MouseButtons.X1)).Call(c => Exit());
+            GameInput.Set(new TouchHandler());
+            GameInput.Set(new MouseHandler());
+            GameInput.Set(new KeyboardHandler());
+            _subscription = GameInput.If(c => c.WasReleased(Keys.Escape) || c.WasReleased(MouseButtons.X1), c => Exit());
+            base.Initialize();
         }
 
         /// <summary>
@@ -70,18 +69,6 @@ namespace WindowsGame
         {
             var layer = AddLayer(new Layer("FpsLayer"));
             layer.AddDrawable(new FpsCounter("Fonts\\Courier New", new Vector2(20, 20)));
-            var system = layer.AddDrawable(new ParticleSystem(5));//new[] { "Particles\\circle", "Particles\\star", "Particles\\diamond" }));
-            GameInput.If(c => c.IsPressed(MouseButtons.Left)).Call(c =>
-            {
-                if (system.State == PlayState.Paused)
-                {
-                    system.Play();
-                }
-                else
-                {
-                    system.Pause();
-                }
-            });
         }
 
         protected override BeginCallOptions GetBeginCallOptions()
@@ -119,13 +106,43 @@ namespace WindowsGame
             protected override Body CreateBody(object data)
             {
                 var body = BodyFactory.CreateRectangle(WorldContext.World, 64, 64, 1f, InitialPosition.ToSimUnits(), data);
-                body.Mass = .001f;
                 body.BodyType = BodyType.Dynamic;
                 body.CollidesWith = Category.All;
                 body.Friction = 1f;
                 //body.IgnoreGravity = true;
                 body.FixedRotation = true;
+                body.Mass = .001f;
                 return body;
+            }
+            
+            public override void Initialize()
+            {
+                base.Initialize();
+
+                var runRight = Input.If(c => c.IsDown(Keys.Left), c => {
+                    Sprites.SetCurrentSheet("run");
+                });
+
+                var settings = new ParticleSettings
+                {
+                    Acceleration = new Vector2(0.00000001f),
+                    Velocity = new Vector2(0.001f, 0.002f),
+                    Mass = 0.00001f
+                };
+
+                var system = Layer.AddDrawable(new ParticleSystem(settings, new[] { "Particles\\circle", "Particles\\star", "Particles\\diamond" }, 60));
+                system.Initialize();
+                var toggleParticleSystem = Input.If(c => c.IsPressed(MouseButtons.Right), c =>
+                {
+                    if (system.State == PlayState.Paused)
+                    {
+                        system.Play();
+                    }
+                    else
+                    {
+                        system.Pause();
+                    }
+                });
             }
 
             protected override void UpdateCore(UpdateContext context)

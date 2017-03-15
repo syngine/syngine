@@ -43,6 +43,11 @@ namespace Syngine.Components
             base.Initialize();
         }
 
+        protected override void UpdateCore(UpdateContext context)
+        {
+            Input.Update(context);
+        }
+
         public override void LoadContent(LoadContext context)
 	    {
 	        if (!string.IsNullOrEmpty(AssetName))

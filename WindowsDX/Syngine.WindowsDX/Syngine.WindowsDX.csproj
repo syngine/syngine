@@ -171,6 +171,9 @@
     <Compile Include="..\..\Syngine\Input\IInputContext.cs">
       <Link>Input\IInputContext.cs</Link>
     </Compile>
+    <Compile Include="..\..\Syngine\Input\IInputManager.cs">
+      <Link>Input\IInputManager.cs</Link>
+    </Compile>
     <Compile Include="..\..\Syngine\Input\IInputSubscription.cs">
       <Link>Input\IInputSubscription.cs</Link>
     </Compile>
@@ -245,7 +248,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" ProjectLinkReference="7e711bca-22dc-40ab-9fe0-cee1c050f968" />
+      <UserProperties ProjectLinkReference="7e711bca-22dc-40ab-9fe0-cee1c050f968" ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -36,6 +36,18 @@ namespace Syngine.Graphics
             TextureNames = textures;
         }
 
+	    /// <summary>
+	    /// Initializes a new instance of the <see cref="ParticleSystem"/> class.
+	    /// </summary>
+	    /// <param name="settings"></param>
+	    /// <param name="textures"></param>
+	    /// <param name="spawnsPerSecond">The spawns per second.</param>
+	    /// <param name="lifeTime">The life time.</param>
+	    public ParticleSystem(ParticleSettings settings, string[] textures, float spawnsPerSecond = 60, float lifeTime = float.MaxValue) : this(textures, spawnsPerSecond, lifeTime)
+        {
+            ParticleFactory = new DefaultParticleFactory(settings);
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -122,7 +134,7 @@ namespace Syngine.Graphics
             {
                 var viewPort = GameContext.Game.GraphicsDevice.Viewport;
                 Emitter = new ParticleEmitter(
-                    new Rectangle(viewPort.Width / 2, viewPort.Height / 2, 1, 1),
+                    new Rectangle(viewPort.Width / 2 - 250, viewPort.Height / 2 - 250, 500, 500),
                     new Vector2(-50, -100),
                     new Vector2(50, 100)
                 );
@@ -153,10 +165,10 @@ namespace Syngine.Graphics
 		    {
                 var textures = new List<Texture2D>(textureNames.Length);
 
-                for (int i = 0; i < textureNames.Length; i++)
-		        {
-		            textures.Add(context.Load<Texture2D>(textureNames[i]));
-		        }
+                foreach (var textureName in textureNames)
+                {
+                    textures.Add(context.Load<Texture2D>(textureName));
+                }
 
 		        Textures = textures.ToArray();
 		    }
@@ -266,7 +278,7 @@ namespace Syngine.Graphics
             Settings = settings;
         }
 
-        public DefaultParticleFactory(Vector2 acceleration, Vector2 velocity, float lifeTime, float mass, float startAlpha = 255, float endAlpha = 0f)
+        public DefaultParticleFactory(Vector2 acceleration, Vector2 velocity, float lifeTime = 60f, float mass = 1f, float startAlpha = 255, float endAlpha = 0f)
         {
             Settings = new ParticleSettings
             {
@@ -293,7 +305,7 @@ namespace Syngine.Graphics
                 EndAlpha = Settings.EndAlpha,
                 Color = Settings.Color,
                 RotationSpeed = Settings.RotationSpeed,
-                Direction = Rand.Vector2()
+                Direction = Settings.Direction
             };
 
             particle.Initialize();
@@ -306,19 +318,19 @@ namespace Syngine.Graphics
     {
         public Color Color { get; set; } = Color.White;
 
-        public Vector2 Acceleration { get; set; }
+        public Vector2 Acceleration { get; set; } = new Vector2(1f);
 
-        public Vector2 Velocity { get; set; }
+        public Vector2 Velocity { get; set; } = new Vector2(1f);
 
-        public float LifeTime { get; set; }
+        public float LifeTime { get; set; } = 60f;
 
-        public float Mass { get; set; }
+        public float Mass { get; set; } = 1f;
 
-        public float StartAlpha { get; set; }
+        public float StartAlpha { get; set; } = 255f;
 
-        public float EndAlpha { get; set; }
+        public float EndAlpha { get; set; } = 1f;
 
-        public Vector2 Direction { get; set; }
+        public Vector2 Direction { get; set; } = Rand.Vector2(-1f, 1f, -1f, 1f);
 
         public float RotationSpeed { get; set; } = Rand.Next(-1f, 1f);
     }
@@ -332,7 +344,7 @@ namespace Syngine.Graphics
     {
         public Texture2D Select(Texture2D[] available)
         {
-            if (available != null && available.Length > 0)
+            if (available?.Length > 0)
             {
                 return available[Rand.Next(0, available.Length - 1)];
             }

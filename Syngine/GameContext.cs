@@ -31,23 +31,14 @@ namespace Syngine
 		/// <summary>
 		/// 
 		/// </summary>
-		public static IController Controller
-		{
-			get
-			{
-				return _controller;
-			}
-		}
+		public static IController Controller => _controller;
 
-		/// <summary>
+	    /// <summary>
 		/// 
 		/// </summary>
-		public static InputManager Input
-		{
-			get { return GameInput.Input; }
-		}
+		public static IInputManager Input => GameInput.Input;
 
-		/// <summary>
+	    /// <summary>
 		/// 
 		/// </summary>
 		public static Camera Camera

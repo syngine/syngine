@@ -14,15 +14,19 @@ namespace Syngine.Components
 		/// </summary>
 		bool IsInitialized { get; }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		void Initialize();
-		
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="context"></param>
-		void Update(UpdateContext context);
-	}
+        ILayer Layer { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void Initialize();
+
+        void SetLayer(ILayer layer);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        void Update(UpdateContext context);
+    }
 }

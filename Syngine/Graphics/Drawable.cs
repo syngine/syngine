@@ -15,7 +15,7 @@ namespace Syngine.Graphics
 
         public virtual void Draw(DrawContext context)
         {
-            if (Visible && Enabled)
+            if (Visible)
             {
                 DrawCore(context);
             }
@@ -61,7 +61,7 @@ namespace Syngine.Graphics
 
         public virtual void Draw(DrawContext context)
         {
-            if (Visible && Enabled)
+            if (Visible)
             {
                 DrawCore(context);
             }

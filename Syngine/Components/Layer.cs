@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Syngine.Graphics;
 
 namespace Syngine.Components
@@ -10,6 +11,7 @@ namespace Syngine.Components
             Name = name;
             Updatables = new List<IUpdate>();
             Drawables = new List<IDraw>();
+            SetLayer(this);
         }
 
         protected IList<IUpdate> Updatables { get; }
@@ -18,7 +20,7 @@ namespace Syngine.Components
 
         public override void Initialize()
         {
-            foreach (var updatable in Updatables)
+            foreach (var updatable in Updatables.ToArray())
             {
                 updatable.Initialize();
             }
@@ -63,6 +65,7 @@ namespace Syngine.Components
             lock (Updatables)
             {
                 Updatables.Add(updatable);
+                updatable.SetLayer(this);
             }
 
             return updatable;

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace Syngine.Graphics
 {
 	/// <summary>
-	/// 
+	/// Emits particles.
 	/// </summary>
 	public class ParticleEmitter
 	{
-		private static readonly Random Random = new Random(DateTime.Now.Millisecond);
-
 	    /// <summary>
 	    /// 
 	    /// </summary>
-	    /// <param name="textures"></param>
 	    /// <param name="region"></param>
 	    /// <param name="minAngle"></param>
 	    /// <param name="maxAngle"></param>
@@ -36,16 +32,17 @@ namespace Syngine.Graphics
 		public Rectangle Region { get; }
 
 		/// <summary>
-		/// 
+		/// Emits the given particle using the context for loading content on the particle.
 		/// </summary>
 		/// <returns></returns>
 		public virtual void Emit(Particle particle, LoadContext context)
 		{
 			particle.Position = GenerateRandomPosition();
+		    particle.Direction = GenerateRandomDirection();
 		}
 
 	    /// <summary>
-		/// 
+		/// Emits a collection of particles.
 		/// </summary>
 		/// <returns></returns>
 		public virtual void Emit(IEnumerable<Particle> particles)
